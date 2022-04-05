@@ -9,10 +9,18 @@
 </head>
 <body>
     <div id="website">
-        Hello world!
-        <div>
-            Hello again ?
-        </div>
+      <div class="header transparent-background">
+        <img src="/assets/logo.png" alt="LOGO IMAGE SUNNY AND CLOUDY " width="80" height="80" class="logo">
     </div>
+        <div class="content form-feel transparent-background">
+            <label for="zip" class="form-field">Enter your Zip code</label>
+            <input id="zip" type="text" pattern="[0-9]" name="ZIP" class="form-field">
+            <label for="feel"  class="form-field"> How do you feel about this weather</label>
+            <textarea id="feel" class="form-field" ></textarea>
+            <button id="get-weather" class="form-field" >Get the weather Now</button>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
 </body>
 </html>
