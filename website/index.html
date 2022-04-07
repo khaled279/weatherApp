@@ -12,12 +12,13 @@
       <div class="header transparent-background">
         <img src="/assets/logo.png" alt="LOGO IMAGE SUNNY AND CLOUDY " width="80" height="80" class="logo">
     </div>
-        <div class="content form-feel transparent-background">
-            <form>
-            <label for="zip" class="form-field">Enter your Zip code</label>
+        <div class="content  transparent-background">
+            <form class="form-feel" onSubmit="return getWeatherRequest()">
+            <label for="zip" class="">Enter your Zip code</label>
             <input id="zip" type="number" placeholder="enter zip code here" pattern="[0-9]" name="ZIP" class="form-field" required>
-            <label for="feelings"  class="form-field"> How do you feel about this weather</label>
+            <label for="feelings"  class=""> How do you feel about this weather</label>
             <textarea id="feelings" class="form-field" required ></textarea>
+            <input type="submit" style="display: none;"></input>
             <button id="generate" class="form-field" >Get the weather Now</button>
         </form>
         </div>

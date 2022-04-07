@@ -9,17 +9,21 @@ const getAppDataEndPoint = "/all" ;
 const dateField = document.getElementById('date'); 
 const tempField = document.getElementById('temp');
 const contentField = document.getElementById('content');
+const sideBar = document.getElementById('sideBar') ; 
+const  docFragment = document.createDocumentFragment();
 
 
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 let zip ; 
 let feel ; 
-const countryCode = "ar"; 
 getWeather.onclick= ()=>{
     zip = zipCodeInput.value ; 
     feel = feelInput.value ; 
-    makeApiCalls(); 
+    if(zip.length===0 || feel.length===0) return  ; 
+    makeApiCalls();
+
+    return  false;  
 } ; 
 
 function makeApiCalls(){
@@ -27,10 +31,12 @@ function makeApiCalls(){
 }
 
 async function getWeatherRequest(){
-   try{
+  
+    try{
     let res =  await fetch(`${baseUrl}${zip}&appid=${apiKey}`).then(postResponse).then(fetchAppData); 
 }
     catch(error ){
+        alert("Please enter a valid zip code!");
         console.log(error) ; 
     }
 }
@@ -58,9 +64,19 @@ async function postResponse(res){
 async function  fetchAppData(){
     let appDataRes = await fetch(getAppDataEndPoint) ; 
     const jsonRes = await appDataRes.json();
-    const lastEntry = await jsonRes.pop()
+    let lastEntry = await jsonRes.pop()
     dateField.innerHTML = `Date: ${lastEntry.date}` 
     tempField.innerHTML = `Temprature: ${lastEntry.temp}` 
     contentField.innerHTML = `you said  ${lastEntry.content} about the weather` 
-
+    sideBar.innerHTML = `<h2>Previous Entries</h2>`
+        for(entry of jsonRes){
+        const newDiv = document.createElement('div'); 
+        newDiv.classList.add('roundedBackground');
+        newDiv.innerHTML = `<div> Entered at: ${entry.date}</div>
+                            <div> temp: ${entry.temp}</div>
+                            <div> you felt: ${entry.content}</div>
+        `
+        docFragment.appendChild(newDiv) ; 
+    }
+    sideBar.appendChild(docFragment) ; 
 }
