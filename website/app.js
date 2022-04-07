@@ -12,7 +12,17 @@ const tempField = document.getElementById('temp');
 const contentField = document.getElementById('content');
 const sideBar = document.getElementById('sideBar') ; 
 const  docFragment = document.createDocumentFragment();
+const header = document.getElementById("header"); 
+document.addEventListener('scroll', onScrollHeader); 
 
+function onScrollHeader(){
+    console.log(window.screenY) ; 
+    if(window.scrollY> 5){
+        header.classList.add('active'); 
+}else {
+   header.classList.remove("active");
+}
+}
 //getting date 
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -74,7 +84,7 @@ async function  fetchAppData(){
     //updates UI with the data in the object last Entry 
     dateField.innerHTML = `Date: ${lastEntry.date}` 
     tempField.innerHTML = `Temprature: ${lastEntry.temp}` 
-    contentField.innerHTML = `you said  ${lastEntry.content} about the weather` 
+    contentField.innerHTML = `you said  "${lastEntry.content}" about the weather` 
     // reset side bar so it can be populated with new data from the get request 
     // here we deal with the rest of the projectData array we populate the sidebar with it 
     sideBar.innerHTML = `<h2>Previous Entries</h2>`
