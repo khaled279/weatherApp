@@ -15,4 +15,4 @@ then open your browser and type<br /> `http://localhost:8080/`
  3- side bar <br />
  4- sticky header with simple animations <br />
  
-  <img src="/assets/app.png" alt="in app image">
+  <img src="/website/assets/app.png" alt="in app image">
