@@ -1,11 +1,16 @@
 
-const getWeather = document.getElementById('get-weather') ; 
+const getWeather = document.getElementById('generate') ; 
 const zipCodeInput = document.getElementById('zip') ;
-const feelInput = document.getElementById('feel');
+const feelInput = document.getElementById('feelings');
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?zip="; 
 const apiKey = "e005dc37ccb13c00d6f3abac73b64bd1&units=imperial" ; 
 const postWeatherApi = "/post/weather/entry"; 
 const getAppDataEndPoint = "/all" ; 
+const dateField = document.getElementById('date'); 
+const tempField = document.getElementById('temp');
+const contentField = document.getElementById('content');
+
+
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 let zip ; 
@@ -35,7 +40,7 @@ async function postResponse(res){
    
     const postData = {
         temp: jsonRes.main.temp , 
-        userFeel : feel , 
+        content: feel , 
         date: newDate 
     }
     let postRes = await fetch(postWeatherApi, {
@@ -52,5 +57,10 @@ async function postResponse(res){
 
 async function  fetchAppData(){
     let appDataRes = await fetch(getAppDataEndPoint) ; 
-    console.log(await appDataRes.json()) ; 
+    const jsonRes = await appDataRes.json();
+    const lastEntry = await jsonRes.pop()
+    dateField.innerHTML = `Date: ${lastEntry.date}` 
+    tempField.innerHTML = `Temprature: ${lastEntry.temp}` 
+    contentField.innerHTML = `you said  ${lastEntry.content} about the weather` 
+
 }

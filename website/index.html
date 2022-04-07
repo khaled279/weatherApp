@@ -13,13 +13,24 @@
         <img src="/assets/logo.png" alt="LOGO IMAGE SUNNY AND CLOUDY " width="80" height="80" class="logo">
     </div>
         <div class="content form-feel transparent-background">
+            <form>
             <label for="zip" class="form-field">Enter your Zip code</label>
-            <input id="zip" type="text" pattern="[0-9]" name="ZIP" class="form-field">
-            <label for="feel"  class="form-field"> How do you feel about this weather</label>
-            <textarea id="feel" class="form-field" ></textarea>
-            <button id="get-weather" class="form-field" >Get the weather Now</button>
+            <input id="zip" type="number" placeholder="enter zip code here" pattern="[0-9]" name="ZIP" class="form-field" required>
+            <label for="feelings"  class="form-field"> How do you feel about this weather</label>
+            <textarea id="feelings" class="form-field" required ></textarea>
+            <button id="generate" class="form-field" >Get the weather Now</button>
+        </form>
         </div>
-
+        <div id="entryHolder">
+            <div id="date">Date : </div>
+            <div id="temp">Temprature : please specify the zip code to get the Temprature</div>
+            <div id="content">Let us know how you feel about the weather</div>
+        </div>
+        <div id="sideBar">
+            <h3>
+                Previous Entries
+            </h3>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>

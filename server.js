@@ -3,6 +3,8 @@ const app = express();
 const bodyParser = require('body-parser'); 
 const { sendStatus } = require('express/lib/response');
 const { SocketAddress } = require('net');
+const cors = require('cors');
+
 const projectData = [{
     temp: 35 , 
     date: '1/4/2022', 
@@ -10,7 +12,7 @@ const projectData = [{
 }] ; 
 app.use(bodyParser.urlencoded({extended:false})); 
 app.use(bodyParser.json()); 
-
+app.use(cors()) ;
 app.use(express.static('website')); 
 
 const port = 8080; 

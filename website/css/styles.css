@@ -4,6 +4,7 @@
     grid-auto-rows: minmax(80px, auto) ; 
     grid-template-areas: "header header header header" 
     "content content content sidebar"
+    "userdata userdata userdata sidebar"
     "footer footer footer footer"
     ;
     row-gap: 20px;
@@ -15,6 +16,8 @@
 }
 html{
     background-image: linear-gradient(to bottom right, rgb(76, 0, 255), rgb(0, 162, 255)); 
+    min-height: 100%;
+    min-width: 100%;
 }
 .logo{
     padding: 10px;
@@ -38,4 +41,25 @@ html{
 
 .form-field{
     margin-top: 10px ;
+}
+
+#entryHolder{
+    grid-area: userdata;
+    border: 1px solid #fff;
+    background-color: rgba( 255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 15px;
+
+    
+}
+
+textarea{
+    resize: none;
+    height: 115px;
+
+    
+}
+#sideBar{
+    grid-area: sidebar;
+    
 }
